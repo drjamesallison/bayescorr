@@ -91,7 +91,7 @@ def initialize_mnest():
                   'importance_nested_sampling':False,
                   'multimodal':False,
                   'const_efficiency_mode':False,
-                  'n_live_points':500,
+                  'n_live_points':100,
                   'evidence_tolerance':0.5,
                   'sampling_efficiency':'model',
                   'n_iter_before_update':500,
@@ -142,6 +142,9 @@ def main():
 	# Set multinest arguments
 	mnest_args = initialize_mnest()
 
+	# Create "chains" directory if missing
+	os.system('mkdir -p ./chains')
+	
 	# Run model without correlation
 	types = ['linear','linear','log','log']
 	pmins = [-1.e2,-1.e2,1.e-2,1.e-2]
